@@ -1,0 +1,65 @@
+body {
+	font-family: Arial;
+}
+
+.logo {
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 49%;
+    padding: 12px;
+}
+
+#logoimg {
+	opacity: 0;
+}
+
+.bar {
+	opacity: 0;
+
+    border-bottom: 2px solid black;
+    border-bottom-color: #AAAAAA;
+    height: 10px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#nav {
+	opacity: 1;
+
+    text-align: center;
+    margin: 10px 0 0 0;
+    padding: 0;
+}
+
+#nav li img {
+	
+}
+
+#nav li {
+	color: gray;
+	text-shadow: #AAAAAA 0 0 2px;
+	padding: 10px;
+	font-size: 20pt;
+	text-align: center;
+    display: inline;
+}
+
+#nav a {
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 20pt;
+	color: #333333;
+}
+
+.revolution {
+	opacity: 0;
+
+	cursor: default;
+	text-shadow: #AAAAAA 0 0 5px;
+	font-size: 30pt;
+	text-align: center;
+	padding: 25px;
+	font-weight:500;
+}

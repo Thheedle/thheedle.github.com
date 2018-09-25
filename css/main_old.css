@@ -1,0 +1,29 @@
+body {
+	background: #EEEEEE;
+	font-family: Arial;
+}
+
+header {
+	background: #D6D6D6;
+}
+
+nav ul {
+	margin: 0;
+	display:inline;
+}
+
+nav h1 {
+	display: inline;
+}
+
+nav img {
+	margin: 0;
+	display: inline;
+}
+
+nav ul li{
+	background: #CD853F;
+	display: inline;
+	padding: 0;
+	margin: 0;
+}
