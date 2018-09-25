@@ -2,18 +2,6 @@ body {
 	font-family: Arial;
 }
 
-.logo {
-	display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 49%;
-    padding: 12px;
-}
-
-#logoimg {
-	opacity: 0;
-}
-
 .bar {
 	opacity: 0;
 
@@ -33,10 +21,6 @@ body {
     padding: 0;
 }
 
-#nav li img {
-	
-}
-
 #nav li {
 	color: gray;
 	text-shadow: #AAAAAA 0 0 2px;
@@ -53,13 +37,35 @@ body {
 	color: #333333;
 }
 
-.revolution {
-	opacity: 0;
+.bio {
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
 
-	cursor: default;
-	text-shadow: #AAAAAA 0 0 5px;
-	font-size: 30pt;
-	text-align: center;
-	padding: 25px;
-	font-weight:500;
+	margin-top: 10px;
+}
+
+.biopic {
+	display: inline-block;
+	width: 29%;
+
+	margin: 0;
+	padding: 0;
+}
+
+.biopic img {
+	width: 100%;
+	vertical-align: middle;
+	box-shadow: 0 0 6px #AAAAAA;
+}
+
+.biobox {
+	display: inline-block;
+	
+	margin: 0;
+	padding: 2%;
+
+	vertical-align: middle;
+
+	width: 66%;
 }
