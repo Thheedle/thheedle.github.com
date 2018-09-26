@@ -1,5 +1,6 @@
 body {
 	font-family: "Lucida Console", Monaco, monospace;
+	cursor: default;
 }
 
 #gamepanel {
@@ -9,4 +10,41 @@ body {
 	margin-right: auto;
 	margin-top: 50px;
 	word-wrap: break-word;
+}
+
+#gamebuttons {
+	width: 360px;
+	height: 200px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+}
+
+#spells,.verticalbar,#items {
+	padding: 0;
+	margin: .5%;
+	height: 160px;
+	float:left;
+	text-align: center;
+}
+
+#spells,#items {
+	text-decoration: underline overline;
+}
+
+#spells {
+	width: 40%;
+	display: table;
+}
+
+.verticalbar {
+
+	width: 5%;
+	display: inline;
+	word-wrap: break-word;
+}
+
+#items {
+	width: 40%;
+	display: table;
 }
