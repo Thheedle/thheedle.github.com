@@ -2,26 +2,30 @@
 <html>
 	<head>
 		<title>Thheedle</title>
-		<link rel="stylesheet" href="css/main.css" type="text/css" />
+		<link rel="stylesheet" href="css/theme.css" type="text/css" />
+		<link rel="stylesheet" href="css/index.css" type="text/css" />
 		<link rel="icon" type="image/png" href="img/icon.png" />
 	</head>
 
 	<body>
-		<div class="logo">
-			<img src="img/thheedle_trimmed.png" alt="Thheedle Logo" class="logo" id="logoimg">
+
+		<img src="img/thheedle_trimmed.png" alt="Thheedle Logo" class="fadeElement" id="logo">
+
+		<div class="bar fadeElement"></div>
+			<ul class= "fadeElement" id="nav">
+				<li><a href="" class="hlink">Home</a></li>
+				<li>/</li>
+				<li><a href="employees" class="hlink">Employees</a></li>
+				<li>/</li>
+				<li><a href="projects" class="hlink">Projects</a></li>
+				<li>/</li>
+				<li><a href="about" class="hlink">About</a></li>
+			</ul>
+			<div class="bar fadeElement"></div>
+		<div class="mainBody">
+			<div class="slogan lateFadeElement">Welcome to the Thheedle revolution.</div>
 		</div>
-		<div class="bar"></div>
-		<ul id="nav">
-			<li><a href="" class="hlink" data-dest="home">Home</a></li>
-			<li>/</li>
-			<li><a href="employees" class="hlink" data-dest="employees">Employees</a></li>
-			<li>/</li>
-			<li><a href="projects" class="hlink" data-dest="projects">Projects</a></li>
-			<li>/</li>
-			<li><a href="#" class="hlink" data-dest="about">About</a></li>
-		</ul>
-		<div class="bar"></div>
-		<div class="revolution">Welcome to the Thheedle revolution.</div>
-		<script src="scripts/indexScript.js"></script>
+		<script src="scripts/themeScript.js"></script>
+		<script src="scripts/index.js"></script>
 	</body>
 </html>
