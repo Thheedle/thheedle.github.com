@@ -11,7 +11,6 @@ function cssHelper() {
 function cssHelperFunction(elm, num) {
 	elm.style.background = colors[num];
 	if (elm.children.length > 0) {
-		alert(elm.children.length + " children");
 		for (var i = 0; i < elm.children.length; i++) {
 			cssHelperFunction(elm.children[i], num + 1);
 		}
