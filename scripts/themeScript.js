@@ -8,4 +8,5 @@ function loadScript(url)
 }
 
 loadScript("scripts/fadeScript.js");
+loadScript("scripts/cssHelperScript.js");
 loadScript("scripts/hlinkScript.js");
