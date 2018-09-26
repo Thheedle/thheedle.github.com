@@ -1,7 +1,22 @@
 var gameScreen = new Array(20);
 var gamePanel = document.getElementById("gamepanel");
 
-gamePanel.addEventListener("keypress", alert("button pressed"));
+var currentKey = 0;
+
+window.addEventListener("keydown", keyPressed);
+
+function keyPressed(e) {
+	currentKey = e.keyCode;
+	if (currentKey <= 40 && currentKey >= 37) {
+		if (currentKey % 2 == 0) {
+			playerY += currentKey - 39;
+		} else {
+			playerX += currentKey - 38;
+		}
+		updateGame();
+	}
+	console.log(currentKey);
+}
 
 var playerX = 3;
 var playerY = 3;
@@ -18,7 +33,7 @@ for (var i = 0; i < 20; i++) {
 function updateGame() {
 	blankCanvas();
 	if (playerOnScreen) {
-		gameScreen[playerY][playerX] = "@";
+		gameScreen[playerX][playerY] = "@";
 	}
 
 
@@ -43,6 +58,6 @@ function blankCanvas() {
 updateGame();
 
 setInterval(function() {
-	playerY++;
+	//playerY++;
 	updateGame();
 }, 1000);
