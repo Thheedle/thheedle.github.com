@@ -1,17 +1,3 @@
-
-#logo {
-	display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 25%;
-    padding: 12px;
-}
-
-#logo, .slogan {
-	opacity: 0;
-}
-
-
 .slogan {
 	cursor: default;
 	text-shadow: #AAAAAA 0 0 5px;

@@ -1,0 +1,56 @@
+.mainBody {
+}
+
+.title, .caption, .screenshot ,.startButton{
+	width: 75%;
+	margin-left: auto;
+	margin-right:auto;
+	text-align: center;
+	opacity: 0;
+}
+
+.title {
+	padding-top: 3%;
+	font-size: 22pt;
+}
+
+.caption{
+	font-size: 17pt;
+}
+
+
+
+.screenshot img{
+	box-shadow: 0 0 15px 2px #AAAAAA;
+	align-items: center;
+	height: auto; 
+    width: auto; 
+    max-width: 100%; 
+}
+
+
+.title, .caption {
+	cursor: default;
+	text-shadow: #AAAAAA 0 0 5px;
+	text-align: center;
+	font-weight:500;
+}
+
+.startButton {
+	font-size: 20pt;
+	text-decoration: none;
+	text-shadow: #AAAAAA 0 0 2px;
+	font-weight: bold;
+	color: #333333;
+}
+/*
+This is where page-specific CSS will go
+
+Copy and rename this file to match the other page files
+
+For example:
+
+example.html
+example.css      <--- this one
+example.js
+*/
