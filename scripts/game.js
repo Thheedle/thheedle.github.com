@@ -1,7 +1,5 @@
 var debug = true;
 
-loadMap();
-
 if (debug) {
 	document.getElementById("debug").style.visibility = "visible";
 }
@@ -12,13 +10,23 @@ for (var i = 0; i < 12; i++) {
 }
 
 var worldMap = new Array(64);
-for (var i = 0; i < 12; i++) {
+for (var i = 0; i < 64; i++) {
 	worldMap[i] = new Array(128);
+	for (var j = 0; j < 128; j++) {
+		worldMap[i][j] = " ";
+	}
 }
+
+var mapRaw;
+loadMap();
+
 
 var gamePanel = document.getElementById("gamepanel");
 
 var currentKey = 0;
+
+var cameraX = 42;
+var cameraY = 26;
 
 var playerX = 3;
 var playerY = 3;
@@ -34,9 +42,22 @@ var collisionCharacters = ["#", "|", "+"];
 
 function noCollisions(x, y) {
 	if (elementOf(gameScreen[y][x], collisionCharacters)) {
+		console.log("collision!");
 		return false;
 	}
 	return true;
+}
+
+function outOfBounds(x, y) {
+	if (12 - y <= 2 || y <= 2 || 20 - x <= 2 || x <= 2) {
+		console.log(x);
+		console.log(y);
+
+		return true;
+
+	}
+	console.log("not out of bounds");
+	return false;
 }
 
 function elementOf(element, container) {
@@ -59,9 +80,18 @@ function keyPressed(e) {
 			nextPlayerX = playerX + currentKey - 38;
 		}
 
-		if (noCollisions(nextPlayerX, nextPlayerY)) {
+		var noColls = noCollisions(nextPlayerX, nextPlayerY);
+		var outOfB = outOfBounds(nextPlayerX, nextPlayerY);
+
+		if (noColls && !outOfB) {
 			playerX = nextPlayerX;
 			playerY = nextPlayerY;
+		}
+
+		if (noColls && outOfB) {
+			console.log("changing camera " + outOfB);
+			cameraX += nextPlayerX - playerX;
+			cameraY += nextPlayerY - playerY;
 		}
 
 		updateGame();
@@ -72,36 +102,54 @@ function keyPressed(e) {
 function loadMap() {
 	var req = new XMLHttpRequest();
 	req.onload = function(){
-    	console.log(this.responseText);
+    	mapRaw = this.responseText;
+    	mapRaw = mapRaw.split("\n");
+    	for (var i = 0; i < 64; i++) {
+    		mapRaw[i] = mapRaw[i].split("");
+    		mapRaw[i][128] = undefined;
+    		for (var j = 0; j < 128; j++) {
+    			worldMap[i][j] = mapRaw[i][j];
+    		}
+    	}
+    	updateGame();
 	};
-	req.open("GET", "/data/worldmap.txt");
+	req.open("GET", "./data/worldmap.txt");
 	req.send();
 }
 
 function updateGame() {
-	blankCanvas();
+	updateMapData();
+	//blankCanvas();
+
 	if (playerOnScreen) {
 		gameScreen[playerY][playerX] = "@";
 		document.getElementById("playerX").innerHTML = "playerX: " + playerX;
 		document.getElementById("playerY").innerHTML = "playerY: " + playerY;
 	}
 
-	gameScreen[5][10] = "#";
-
-	var data = "";
+	let data = "";
 	for (var i = 0; i < 12; i++) {
 		for (var j = 0; j < 20; j++) {
 			data = data + gameScreen[i][j];
 		}
+		data = data + "\n";
 	}
-
 	gamePanel.innerHTML = data;
+}
+
+function updateMapData() {
+	for (var i = 0; i < 12; i++) {
+		for (var j = 0; j < 20; j++) {
+			//console.log("character added: " +  worldMap[i+cameraY][j+cameraX]);
+			gameScreen[i][j] = worldMap[i+cameraY][j+cameraX];
+		}
+	}
 }
 
 function blankCanvas() {
 	for (var i = 0; i < 12; i++) {
 		for (var j = 0; j < 20; j++) {
-			gameScreen[i][j] = ".";
+			gameScreen[i][j] = " ";
 		}
 	}
 }
