@@ -4,8 +4,9 @@ body {
 
 
 
-.bar, #nav {
+#nav {
 	opacity: 0;
+	margin-top: 0;
 }
 
 .bar, .mainBody {
@@ -27,14 +28,18 @@ body {
 #nav {
     text-align: center;
     font-size: 20pt;
-    margin: 10px 0 0 0;
     padding: 0;
 }
-#nav li {
+#nav ul li {
 	color: gray;
 	text-shadow: #AAAAAA 0 0 2px;
 	padding: 10px;
     display: inline;
+}
+
+#nav ul {
+	margin: 10px 0 0 0;
+	padding: 0;
 }
 
 #nav a {
