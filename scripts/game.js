@@ -1,12 +1,17 @@
 var debug = true;
 
+const GAMEWIDTH  = 40;
+const GAMEHEIGHT = 20;
+const HMARGIN = 8;
+const VMARGIN = 4;
+
 if (debug) {
 	document.getElementById("debug").style.visibility = "visible";
 }
 
-var gameScreen = new Array(12);
-for (var i = 0; i < 12; i++) {
-	gameScreen[i] = new Array(20);
+var gameScreen = new Array(GAMEHEIGHT);
+for (var i = 0; i < GAMEHEIGHT; i++) {
+	gameScreen[i] = new Array(GAMEWIDTH);
 }
 
 var worldMap = new Array(64);
@@ -28,8 +33,8 @@ var currentKey = 0;
 var cameraX = 42;
 var cameraY = 26;
 
-var playerX = 3;
-var playerY = 3;
+var playerX = GAMEWIDTH / 2;
+var playerY = GAMEHEIGHT / 2;
 
 var nextPlayerX;
 var nextPlayerY;
@@ -49,7 +54,7 @@ function noCollisions(x, y) {
 }
 
 function outOfBounds(x, y) {
-	if (12 - y <= 2 || y <= 2 || 20 - x <= 2 || x <= 2) {
+	if (GAMEHEIGHT - y - 1 <= VMARGIN || y <= VMARGIN || GAMEWIDTH - x - 1 <= HMARGIN || x <= HMARGIN) {
 		console.log(x);
 		console.log(y);
 
@@ -128,8 +133,8 @@ function updateGame() {
 	}
 
 	let data = "";
-	for (var i = 0; i < 12; i++) {
-		for (var j = 0; j < 20; j++) {
+	for (var i = 0; i < GAMEHEIGHT; i++) {
+		for (var j = 0; j < GAMEWIDTH; j++) {
 			data = data + gameScreen[i][j];
 		}
 		data = data + "\n";
@@ -138,8 +143,8 @@ function updateGame() {
 }
 
 function updateMapData() {
-	for (var i = 0; i < 12; i++) {
-		for (var j = 0; j < 20; j++) {
+	for (var i = 0; i < GAMEHEIGHT; i++) {
+		for (var j = 0; j < GAMEWIDTH; j++) {
 			//console.log("character added: " +  worldMap[i+cameraY][j+cameraX]);
 			gameScreen[i][j] = worldMap[i+cameraY][j+cameraX];
 		}
@@ -147,8 +152,8 @@ function updateMapData() {
 }
 
 function blankCanvas() {
-	for (var i = 0; i < 12; i++) {
-		for (var j = 0; j < 20; j++) {
+	for (var i = 0; i < GAMEHEIGHT; i++) {
+		for (var j = 0; j < GAMEWIDTH; j++) {
 			gameScreen[i][j] = " ";
 		}
 	}

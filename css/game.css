@@ -3,11 +3,13 @@ body {
 }
 
 #gamepanel {
-	width: 200px;
-	height: 200px;
+	width: 400px;
+	height: 320px;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 50px;
+
+	text-align: center;
 	white-space: pre;
 }
 
@@ -22,6 +24,7 @@ body {
 #debug {
 	visibility: hidden;
 	width: 120px;
+	height: 60px;
 }
 
 #spells,.verticalbar,#items {
