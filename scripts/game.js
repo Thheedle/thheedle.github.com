@@ -160,5 +160,3 @@ setInterval(function() {
 	//playerY++;
 	updateGame();
 }, 1000);
-
-alert();
