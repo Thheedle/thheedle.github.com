@@ -1,6 +1,5 @@
 body {
 	font-family: "Lucida Console", Monaco, monospace;
-	cursor: default;
 }
 
 #gamepanel {
@@ -12,12 +11,17 @@ body {
 	word-wrap: break-word;
 }
 
-#gamebuttons {
+#gamebuttons, #debug {
 	width: 360px;
 	height: 200px;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 10px;
+}
+
+#debug {
+	visibility: hidden;
+	width: 120px;
 }
 
 #spells,.verticalbar,#items {
