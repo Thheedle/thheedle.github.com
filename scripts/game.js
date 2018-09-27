@@ -74,7 +74,7 @@ function loadMap() {
 	req.onload = function(){
     	console.log(this.responseText);
 	};
-	req.open("GET", "worldmap.txt");
+	req.open("GET", "/data/worldmap.txt");
 	req.send();
 }
 
