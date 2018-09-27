@@ -4,9 +4,8 @@ body {
 
 
 
-#logo, #nav, .mainBody {
+.fadeElement {
 	opacity: 0;
-	margin-top: 0;
 }
 
 .bar, .mainBody {
