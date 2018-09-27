@@ -1,10 +1,9 @@
-var fadeElements = document.getElementsByClassName("fadeElement");
-var lateFadeElements = document.getElementsByClassName("lateFadeElement");
+let fadeElements = document.getElementsByClassName("fadeElement");
 
 function fadeIn(elm) {
-	var op = 0;
+	let op = 0;
 
-	var timer = setInterval(function () {
+	let timer = setInterval(function () {
 		if (op >= 1) {
 			elm.style.opacity = 1;
 			clearInterval(timer);
@@ -15,9 +14,11 @@ function fadeIn(elm) {
 }
 
 function fadeInArray(arr) {
- 	var le = arr.length;
- 	for (var i = 0; i < le; i++) {
- 		fadeIn(arr[i]);
+ 	let le = arr.length;
+ 	for (let i = 0; i < le; i++) {
+ 		let elm = arr[i];
+ 		console.log(elm.getAttribute("data-fadeTime"));
+ 		setTimeout(function() {fadeIn(elm)}, elm.getAttribute("data-fadeTime")*1000);
  	}
 }
 
@@ -26,4 +27,3 @@ function fadeInLate(arr) {
 }
 
 fadeInArray(fadeElements);
-fadeInLate(lateFadeElements)
