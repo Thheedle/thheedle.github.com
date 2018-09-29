@@ -1,12 +1,17 @@
-var debug = true;
+var debugEnabled = false;
 
 const GAMEWIDTH  = 40;
 const GAMEHEIGHT = 20;
 const HMARGIN = 8;
 const VMARGIN = 4;
 
-if (debug) {
+if (debugEnabled) {
+	debug();
+}
+
+function debug() {
 	document.getElementById("debug").style.visibility = "visible";
+	document.getElementById("fireballButton").setAttribute("onclick", "spellProne()");
 }
 
 var gameScreen = new Array(GAMEHEIGHT);
@@ -33,6 +38,8 @@ var currentKey = 0;
 var cameraX = 42;
 var cameraY = 26;
 
+var playerBold = true;
+var playerProne = false;
 var playerX = GAMEWIDTH / 2;
 var playerY = GAMEHEIGHT / 2;
 
@@ -40,6 +47,13 @@ var nextPlayerX;
 var nextPlayerY;
 
 var playerOnScreen = true;
+var moveChar = true;
+
+var castSpell = false;
+
+var fireballs = new Array(15);
+
+console.log(fireballs[0] == undefined);
 
 window.addEventListener("keydown", keyPressed);
 
@@ -47,7 +61,6 @@ var collisionCharacters = ["#", "|", "+"];
 
 function noCollisions(x, y) {
 	if (elementOf(gameScreen[y][x], collisionCharacters)) {
-		console.log("collision!");
 		return false;
 	}
 	return true;
@@ -55,13 +68,8 @@ function noCollisions(x, y) {
 
 function outOfBounds(x, y) {
 	if (GAMEHEIGHT - y - 1 <= VMARGIN || y <= VMARGIN || GAMEWIDTH - x - 1 <= HMARGIN || x <= HMARGIN) {
-		console.log(x);
-		console.log(y);
-
 		return true;
-
 	}
-	console.log("not out of bounds");
 	return false;
 }
 
@@ -77,31 +85,102 @@ function elementOf(element, container) {
 function keyPressed(e) {
 	currentKey = e.keyCode;
 	if (currentKey <= 40 && currentKey >= 37) {
-		if (currentKey % 2 == 0) {
-			nextPlayerX = playerX;
-			nextPlayerY = playerY + currentKey - 39;
-		} else {
-			nextPlayerY = playerY;
-			nextPlayerX = playerX + currentKey - 38;
+		if (moveChar) {
+			if (currentKey % 2 == 0) {
+				nextPlayerX = playerX;
+				nextPlayerY = playerY + currentKey - 39;
+			} else {
+				nextPlayerY = playerY;
+				nextPlayerX = playerX + currentKey - 38;
+			}
+
+			var noColls = noCollisions(nextPlayerX, nextPlayerY);
+			var outOfB = outOfBounds(nextPlayerX, nextPlayerY);
+
+			if (noColls && !outOfB) {
+				playerX = nextPlayerX;
+				playerY = nextPlayerY;
+			}
+
+			if (noColls && outOfB) {
+				cameraX += nextPlayerX - playerX;
+				cameraY += nextPlayerY - playerY;
+			}
 		}
-
-		var noColls = noCollisions(nextPlayerX, nextPlayerY);
-		var outOfB = outOfBounds(nextPlayerX, nextPlayerY);
-
-		if (noColls && !outOfB) {
-			playerX = nextPlayerX;
-			playerY = nextPlayerY;
+		if (castSpell) {
+			if (currentKey % 2 == 0) {
+				createFireball(playerX, playerY + currentKey - 39, 0, currentKey - 39);
+			} else {
+				createFireball(playerX + currentKey - 38, playerY, currentKey - 38, 0);
+			}
+			castSpell = false;
+			moveChar = true;
+			playerProne = false;
 		}
-
-		if (noColls && outOfB) {
-			console.log("changing camera " + outOfB);
-			cameraX += nextPlayerX - playerX;
-			cameraY += nextPlayerY - playerY;
-		}
-
 		updateGame();
 	}
-	console.log(currentKey);
+}
+
+function createFireball(xStart, yStart, xDel, yDel) {
+	var index = 0;
+	while (fireballs[index] != null) {
+		index++;
+	}
+	fireballs[index] = {
+		xPos: xStart,
+		yPos: yStart,
+		xDelta: xDel,
+		yDelta: yDel,
+		lifetime: 5
+	};
+}
+
+function updateFireballs() {
+	for (var i = 0; i < fireballs.length; i++) {
+		if (fireballs[i] != undefined) {
+			if (fireballs[i].lifetime <= 0) {
+				fireballs[i] = undefined;
+			} else {
+				var tempNextX = fireballs[i].xPos + fireballs[i].xDelta;
+				var tempNextY = fireballs[i].yPos + fireballs[i].yDelta;
+				if (noCollisions(tempNextX, tempNextY)) {
+					fireballs[i].xPos = tempNextX;
+					fireballs[i].yPos = tempNextY;
+					fireballs[i].lifetime--;
+				} else {
+					fireballs[i] = undefined;
+				}
+			}
+		}
+	}
+}
+
+function drawFireballs() {
+	for (var i = 0; i < fireballs.length; i++) {
+		if (fireballs[i] != undefined) {
+			if (fireballs[i].xPos >= 1 && fireballs[i].xPos <= GAMEWIDTH && fireballs[i].yPos >= 1 && fireballs[i].yPos <= GAMEHEIGHT) {
+				gameScreen[fireballs[i].yPos][fireballs[i].xPos] = '<span style="background-color: red"> </span>';
+			}
+		}
+	}
+}
+
+function updateNecessary() {
+	for (var i = 0; i < fireballs.length; i++) {
+		if (fireballs[i] != undefined) {
+			return true;
+		}
+	}
+	return false;
+}
+
+function spellProne() {
+	moveChar = false;
+	castSpell = true;
+	playerProne = true;
+	playerBold = false;
+	updateGame();
+	console.log("cast spell");
 }
 
 function loadMap() {
@@ -126,8 +205,16 @@ function updateGame() {
 	updateMapData();
 	//blankCanvas();
 
+	drawFireballs();
+
 	if (playerOnScreen) {
-		gameScreen[playerY][playerX] = "@";
+		if (playerProne) {
+			gameScreen[playerY][playerX] = '<span style="background-color: #4454ff; color: white">@</span>';
+		} else if (playerBold) {
+			gameScreen[playerY][playerX] = '<span style="background-color: grey; color: white">@</span>';
+		} else {
+			gameScreen[playerY][playerX] = "@";
+		}
 		document.getElementById("playerX").innerHTML = "playerX: " + playerX;
 		document.getElementById("playerY").innerHTML = "playerY: " + playerY;
 	}
@@ -165,3 +252,18 @@ setInterval(function() {
 	//playerY++;
 	updateGame();
 }, 1000);
+
+setInterval(function() {
+	//playerY++;
+	if (!playerProne) {
+		playerBold = !playerBold;
+	}
+	updateGame();
+}, 500);
+
+setInterval(function() {
+	if (updateNecessary()) {
+		updateFireballs();
+		updateGame();
+	}
+}, 250);
