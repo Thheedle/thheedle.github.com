@@ -266,4 +266,4 @@ setInterval(function() {
 		updateFireballs();
 		updateGame();
 	}
-}, 250);
+}, 100);
