@@ -7,6 +7,6 @@ function loadScript(url)
     head.appendChild(script);
 }
 
-loadScript("scripts/js/fadeScript.js");
-loadScript("scripts/js/cssHelperScript.js");
-loadScript("scripts/js/hlinkScript.js");
+loadScript("../scripts/js/fadeScript.js");
+loadScript("../scripts/js/cssHelperScript.js");
+loadScript("../scripts/js/hlinkScript.js");
