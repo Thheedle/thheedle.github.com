@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+	<head>
+		<title>New and Improved</title>
+		<link rel="stylesheet" href="css/newGame.css" type="text/css" />
+		<link rel="icon" type="image/png" href="img/icon.png" />
+	</head>
+
+	<body id="body">
+		<div id="menu">
+			<ul>
+				<li><button data-index="0" id="collection" class="gameButton menuButton" onclick="giveFocus(event)">Collection</button></li>
+				<li><button data-index="1" id="items" class="gameButton menuButton" onclick="giveFocus(event)">Items</button></li>
+				<li><button data-index="2" id="quests" class="gameButton menuButton" onclick="giveFocus(event)">Quests</button></li>
+			</ul>
+		</div>
+
+		<div id="gameText">
+			Loading...
+		</div>
+
+		<button type="button" onclick="eatPopcorns()" class="gameButton">Eat Your Popcorns</button>
+
+		<button type="button" onclick="cssHelper()" class="gameButton">cssHelper</button>
+		<script src="scripts/newGame.js"></script>
+		<script src="scripts/js/cssHelperScript.js"></script>
+	</body>
+</html>
