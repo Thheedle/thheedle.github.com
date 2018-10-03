@@ -8,8 +8,8 @@
 
 .biopic, .biobox {
 	display: inline-block;
-	margin: 0;
 	background: #f0f0f0;
+	margin:-2px;
 }
 
 .biopic img, .biobox {
