@@ -1,33 +1,39 @@
 body {
-	font-family: "Lucida Grande", Monaco, monospace;
 	margin: 0;
 	padding: 0;
+	font-family: arial;
+}
+
+.monospace {
+	font-family: "Lucida Grande", Monaco, monospace;
+	white-space: pre-wrap;
 }
 
 #menu {
-	padding: 0;
 	margin-left: auto;
 	margin-right: auto;
-
-	text-align: center;
 
 	width: 50%;
 }
 
 #menu ul {
+	padding: 0;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
 	list-style-type: none;
 }
 
 #menu ul li {
-	display: inline-block;
-	padding: 0;
-	margin: -2px;
+	display: inline;
 }
 
 .gameButton {
+	font-size: 8pt;
 	outline: none;
 	margin: 10px;
 	padding: 1px 6px;
+	user-select: none;
 
 	background-color: white;
 	border-style: solid;
@@ -48,6 +54,84 @@ body {
 	border-color: black;
 }
 
-#gameText {
+#gameText, #popcornsEaten, #recentMessages{
 	margin: 10px;
+}
+
+#popcornsEaten {
+	visibility: hidden;
+	height: 0;
+}
+
+.verticalDivider, #mainTextPanel, #interactiveArea {
+	margin: 0;
+	padding: 0;
+}
+
+.verticalDivider {
+	width: 2%;
+	height: 50vh;
+
+	float: left;
+}
+
+.verticalBar {
+	width: 50%;
+	height: 100%;
+
+	float: left;
+	border-right: 1px solid grey;
+
+}
+
+#mainTextPanel {
+	width: 49%;
+	float: left;
+}
+
+#interactiveArea {
+	width: 49%;
+	height: 50vh;
+	float: left;
+}
+
+.popcornNodeContainer {
+	width: 10%;
+	margin: 0;
+	height: 10%;
+
+
+	float: left;
+	text-align: center;
+	cursor: default;
+
+	pointer-events: none
+}
+
+.popcornNode {
+	width: 10%;
+	margin: 20%;
+	height: 10%;
+	font-size: 150%;
+	user-select: none;
+
+	pointer-events: auto;
+}
+
+#recentMessages {
+	position: relative;
+	width: 100%;
+	height: 5em;
+}
+
+.mainMessage, .oldMessage {
+	position: absolute;
+}
+
+.mainMessage {
+	color: #000000;
+}
+
+.oldMessage {
+	color: #CFCFCF;
 }
