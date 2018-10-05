@@ -1,25 +1,50 @@
-body {
-  align-items:center;
+.bioheader, .employee, .biopic img {
+	width: 100%;
 }
 
-.employee {
+.biopic, .biobox {
+	display: inline-block;
+	background: #f0f0f0;
+	margin:-2px;
+}
+
+.col {
+	display: inline-block;
+}
+
+.biopic img, .biobox {
 	vertical-align: middle;
 }
 
+.biopic {
+	width: 32%;
+	padding: 0;
+}
+
+.biobox {
+	padding: 1.5%;
+	width: 66%;
+}
+
+.col .biopic {
+	width: 100%;
+	padding: 0;
+}
+
+.employee .col {
+	padding: 0;
+	top: 50%;
+	
+}
+.col .biobox {
+	padding: 1.5%;
+	width: 100%;
+	top: 50%;
+}
 
 
 .biobox, .biopic img {
 	box-shadow: 0 0 6px #AAAAAA;
-	background: #f0f0f0;
-	vertical-align: middle;
-}
-
-
-
-
-
-.biopic img {
-	width: 100%;
 }
 
 .name {
@@ -44,3 +69,10 @@ body {
 	font-size: 13pt;
 }
 
+.float-right {
+	float: right;
+}
+
+.employee {
+	overflow: hidden;
+}
