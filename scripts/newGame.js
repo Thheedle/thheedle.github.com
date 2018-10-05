@@ -2,11 +2,22 @@ var gameText = document.getElementById("gameText");
 var popcornArea = document.getElementById("interactiveArea");
 var gameTextArray = new Array(10);
 
+var menuElements = new Array(3);
+menuElements[0] = document.getElementsByClassName("collectionElement");
+menuElements[1] = document.getElementsByClassName("itemsElement");
+menuElements[2] = document.getElementsByClassName("questsElement");
+
+
 var recentMessages = new Array(5);
 var recentMessagesPanel = document.getElementById("recentMessages").children;
 var messageBackup = new Array(50);
 
-var recentMessagesSpacing = 1.5;
+var messageQueue = [];
+var isMoving = false;
+
+var recentMessagesSpacing = 1.3;
+var defaultRecentSpeed = 10;
+var queueRecentSpeed = 80;
 
 for (var i = 0; i < 5; i++) {
 	recentMessagesPanel[i].style.top = i*recentMessagesSpacing + "em";
@@ -63,6 +74,23 @@ function giveFocus(e) {
 		menuButtons[i].style["background-color"] = "white";
 	}
 	e.target.style["background-color"] = "#f4e242";
+
+	for (var i = 0; i < 3; i++) {
+		if (i == e.target.dataset.activate) {
+			for (var j = 0; j < menuElements[i].length; j++) {
+				menuElements[i][j].style.visibility = "visible";
+				console.log("changing...");
+				console.log(menuElements[i][j]);
+				console.log(e.target.dataset.activate);
+			}
+		} else {
+			for (var j = 0; j < menuElements[i].length; j++) {
+				menuElements[i][j].style.visibility = "hidden";
+				console.log(menuElements[i][j]);
+				console.log(e.target.dataset.activate);
+			}
+		}
+	}
 }
 
 function addPopcorns() {
@@ -138,11 +166,24 @@ function getRandomInt(max) {
 }
 
 function addMessage(text) {
-	updateRecentMessages();
+	messageQueue.push(text);
+	if (!isMoving) {
+		pushMessageFromQueue(false);
+	}
+}
+
+function pushMessageFromQueue(calledRecursively) {
+	isMoving = true;
+	if (calledRecursively) {
+		updateRecentMessages(queueRecentSpeed);
+	} else {
+		updateRecentMessages(defaultRecentSpeed);
+	}
 	for (var i = 4; i > 0; i--) {
 		recentMessages[i] = recentMessages[i-1];
 	}
-	recentMessages[0] = text;
+	recentMessages[0] = messageQueue.shift();
+	console.log(recentMessages[0]);
 }
 
 function addRandomMessage() {
@@ -151,9 +192,8 @@ function addRandomMessage() {
 	addMessage(messages[yeet]);
 }
 
-function updateRecentMessages() {
+function updateRecentMessages(speed) {
 	for (var i = 0; i < 5; i++) {
-		//console.log(recentMessages[i]);
 		(function(index) {
 			let originalPos = parseFloat(recentMessagesPanel[index].style.top);
 			let pos = 0;
@@ -163,18 +203,25 @@ function updateRecentMessages() {
 					if (index == 0) {
 						recentMessagesPanel[index].style.opacity = 0;
 						fadeIn(recentMessagesPanel[index]);
+						recentMessagesPanel[index].style.top = originalPos + "em";
 					}
 					if (index == 4) {
 						recentMessagesPanel[index].style.opacity = 1;
 						fadeOut(recentMessagesPanel[index]);
+						isMoving = false;
+						recentMessagesPanel[index].style.top = originalPos + "em";
+						if (messageQueue.length > 0) {
+							pushMessageFromQueue(true);
+						}
+					} else {
+						recentMessagesPanel[index].style.top = originalPos + "em";
 					}
-					recentMessagesPanel[index].style.top = originalPos + "em";
 					recentMessagesPanel[index].innerHTML = recentMessages[index];
 				} else {
 					recentMessagesPanel[index].style.top = originalPos + pos + "em";
 					pos = pos + .1 * recentMessagesSpacing;
 				}
-			}, 30);
+			}, speed);
 		})(i);
 	}
 }
@@ -189,7 +236,7 @@ function fadeIn(elm) {
 		}
 		elm.style.opacity = op;
 		op = op + .05;
-	}, 20);
+	}, 7);
 }
 
 function fadeOut(elm) {

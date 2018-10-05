@@ -9,13 +9,13 @@
 	<body>
 		<div id="menu">
 			<ul>
-				<li><span data-index="0" id="collection" class="gameButton menuButton" onclick="giveFocus(event)">Collection</span></li>
-				<li><span data-index="1" id="items" class="gameButton menuButton" onclick="giveFocus(event)">Items</span></li>
-				<li><span data-index="2" id="quests" class="gameButton menuButton" onclick="giveFocus(event)">Quests</span></li>
+				<li><span data-activate="0" id="collection" class="gameButton menuButton" onclick="giveFocus(event)">Collection</span></li>
+				<li><span data-activate="1" id="items" class="gameButton menuButton" onclick="giveFocus(event)">Items</span></li>
+				<li><span data-activate="2" id="quests" class="gameButton menuButton" onclick="giveFocus(event)">Quests</span></li>
 			</ul>
 		</div>
 
-		<div id="gameArea">
+		<div id="gameArea" class="collectionElement">
 			<div id="mainTextPanel">
 				<div id="gameText">
 					Loading...
