@@ -1,25 +1,32 @@
-body {
-  align-items:center;
+.bioheader, .employee, .biopic img {
+	width: 100%;
 }
 
 .employee {
-	vertical-align: middle;
+	padding: 1% 0;
 }
 
+.biopic, .biobox {
+	display: inline-block;
+	background: #f0f0f0;
+	margin:-2px;
+}
 
+.biopic img, .biobox {
+	vertical-align: middle;
+}
+.biopic {
+	width: 29%;
+	padding: 0;
+}
 
 .biobox, .biopic img {
 	box-shadow: 0 0 6px #AAAAAA;
-	background: #f0f0f0;
-	vertical-align: middle;
 }
 
-
-
-
-
-.biopic img {
-	width: 100%;
+.biobox {
+	padding: 1.5%;
+	width: 66%;
 }
 
 .name {
