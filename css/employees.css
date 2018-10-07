@@ -1,27 +1,39 @@
-.bioheader, .employee, .biopic img {
+
+
+.biopic, .biobox {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+    padding: 0;
+    margin: 0;
+    background: #f0f0f0;
+}
+
+.biopic img, .biobox {
+	vertical-align: middle;
+	box-shadow: 0 0 6px #AAAAAA;
 	width: 100%;
+}
+.biopic {
+	width: 29%;
 }
 
 .biobox {
-	padding: 1.5%;
-}
-
-
-.biobox, .biopic img {
-	box-shadow: 0 0 6px #AAAAAA;
+	width: 66%;
+	padding: 5px;
 }
 
 .name {
-	font-size: 20pt;
+	font-size: 18pt;
     float: left;
 }
 .position {
-	font-size: 20pt;
+	font-size: 16pt;
 	float: right;
 }
 
 .bio {
-	font-size: 13pt;
+	font-size: 11pt;
 }
 
 .bioheader {
@@ -30,22 +42,4 @@
     border-bottom-color: #AAAAAA;
     margin-bottom: 0.5%;
     padding-bottom: 1%;
-}
-
-.float-right {
-	float: right;
-}
-
-.bioElements {
-    display: inline-block;
-    vertical-align: middle;
-    float: none;
-    padding: 0;
-    margin: 0px;
-    background: #f0f0f0;
-}
-
-.employee {
-padding-top: 1%;
-padding-bottom: 1%;
 }

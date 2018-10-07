@@ -1,101 +1,47 @@
 <!doctype html>
 <html>
 	<head>
-		<!--CHANGE THIS-->
 		<title>Thheedle</title>
 		<meta charset="utf-8">
 		<meta name="description" content="Thheelde is a revolution that is sweeping the nation">
 		<meta name="keywords" content="Thheedle, schedule maker, schhedule maker, innovation, crowdfunding, open source">
 		<meta name="author" content="Thheedle Co.">
-		<meta name="viewport" content="width = device-width, initial-scale = 1">
 
-		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/theme.css" type="text/css" />
 		<link rel="stylesheet" href="css/index.css" type="text/css" />
 		<link rel="icon" type="image/png" href="img/icon.png" />
 	</head>
 
 	<body>
-		<div class="main">
-			<header>
-				<!--Thheedle Logo-->
-				<div class="row fadeElement" data-fadeTime="0">
-					<!-- Spacer to center the logo-->
-					<div class="col col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
-					<div class="col col-lg-10 col-md-10 col-sm-12 col-xs-12">
-						<div class="col col-lg-4 col-md-4 col-sm-4 col-xs-4"></div>
-
-						<!-- The logo div-->
-						<div class="col col-lg-4 col-md-4 col-sm-4 col-xs-4">
-							<img src="img/thheedle_trimmed.png" alt="Thheedle Logo" id="logo">
-						</div>
-					</div>
-				</div>
-
-				<!-- Upper Bar-->
-				<div class="row fadeElement" data-fadeTime="0"">
-					<!-- Thin spacer to center the bar-->
-					<div class="col col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
-					<!-- The bar-->
-					<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-						<div class="bar"></div>
-					</div>
-				</div>
-
-				<!-- Nav buttons-->
-				<div class="row fadeElement" data-fadeTime=".16">
-					<nav>
-						<ul>
-							<!-- Spacer that goes to 0 in mobile-->
-							<div class="col col-lg-2 col-md-2 col-sm-0 col-xs-0"></div>
-
-							<!-- Home nav-->
-							<div class="col col-lg-2 col-md-2 col-sm-12 col-xs-12">
-								<li><a class="hlink" href="/">Home</a></li>
-							</div>
-							<!-- Employees nav-->
-							<div class="col col-lg-2 col-md-2 col-sm-12 col-xs-12">
-								<li><a class="hlink" href="employees">Employees</a></li>
-							</div>
-							<!-- Projects nav-->
-							<div class="col col-lg-2 col-md-2 col-sm-12 col-xs-12">
-								<li><a class="hlink" href="projects">Projects</a></li>
-							</div>
-							<!-- About nav-->
-							<div class="col col-lg-2 col-md-2 col-sm-12 col-xs-12">
-								<li><a class="hlink" href="about">About</a></li>
-							</div>
-						</ul>
-					</nav>
-				</div>
-
-				<!--Lower Bar-->
-				<div class="row fadeElement" data-fadeTime="0"">
-					<!-- Thin spacer to center the bar-->
-					<div class="col col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
-					<!-- The bar-->
-					<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-						<div class="bar"></div>
-					</div>
-				</div>
-					
-			</header>
-			<div id="page-content">
-				<div class="container">
-
-					<!--Slogan-->
-						<div class="row">
-							<div class="col col-lg-2 col-md-2 col-sm-0 col-xs-0"></div>
-							<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-								<div class="slogan fadeElement" data-fadeTime=".33">Welcome to the Thheedle Revolution.</div>
-							</div>
-							<div class="col col-lg-2 col-md-2 col-sm-0 col-xs-0"></div>
-						</div>
-					</div>
-				</div>
+		<header>
+		<!--Thheedle Logo-->
+			<div class="fadeElement" data-fadeTime="0">
+				<img src="img/thheedle_trimmed.png" alt="Thheedle Logo" id="logo">
 			</div>
+			
+			<nav class="fadeElement" data-fadeTime="0">
+				<!-- Upper Bar-->
+				<div class="bar"></div>
+				<!-- Nav Buttons-->
+				<ul>
+					<li><a href="" class="hlink">Home</a></li>
+					<li>/</li>
+					<li><a href="employees" class="hlink">Employees</a></li>
+					<li>/</li>
+					<li><a href="projects" class="hlink">Projects</a></li>
+					<li>/</li>
+					<li><a href="about" class="hlink">About</a></li>
+				</ul>
+				<!-- Lower Bar-->
+				<div class="bar fadeElement"></div>
+			</nav>
+		</header>
+		<div class="contentSpacer"></div>
+		<div id="pageContent" class="fadeElement" data-fadeTime=".33">
+			<div class="slogan">Welcome to the Thheedle revolution.</div>
 		</div>
-		<script src="scripts/pages/index.js"></script>
+		
 		<script src="scripts/js/themeScript.js"></script>
+		<script src="scripts/pages/index.js"></script>
 	</body>
 </html>
