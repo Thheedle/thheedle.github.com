@@ -18,19 +18,27 @@
 		<div id="gameArea" class="collectionElement">
 			<div id="mainTextPanel">
 				<div id="gameText">
-					Loading...
+					You have 
+					<span class="ownedCounter">
+					</span>
+					 popcorns.
 				</div>
 				
-				<div id="popcornsEaten">
-					You have eaten 0 popcorns.
+				<div id="popcornsEaten" class="collectionElement secret">
+					You have eaten 
+					<span class="eatenCounter">
+					</span> 
+					 popcorns.
 				</div>
 
-				<button type="button" onclick="eatPopcorns()" class="gameButton">Eat Your Popcorns</button>
+				<button type="button" onclick="clickedEat()" class="gameButton">Eat Your Popcorns</button>
 
 				<button type="button" onclick="addRandomMessage()" class="gameButton">Get Random Message</button>
 
 				<div id="recentMessages">
 					<div class="mainMessage"></div>
+					<div class="oldMessage"></div>
+					<div class="oldMessage"></div>
 					<div class="oldMessage"></div>
 					<div class="oldMessage"></div>
 					<div class="oldMessage"></div>
@@ -46,7 +54,18 @@
 			</div>
 		</div>
 
-		<script src="scripts/newGame.js"></script>
+		<div id="itemArea" class="itemsElement hidden">
+			No items yet!
+		</div>
+
+		<script src="scripts/gamefiles/utility.js"></script>
+		<script src="scripts/gamefiles/fade.js"></script>
+		<script src="scripts/gamefiles/MenuBar.js"></script>
+		<script src="scripts/gamefiles/MessagePanel.js"></script>
+		<script src="scripts/gamefiles/PopcornArea.js"></script>
+		<script src="scripts/gamefiles/PopcornCounter.js"></script>
+
+		<script src="scripts/gamefiles/newGame.js"></script>
 		<script src="scripts/js/cssHelperScript.js"></script>
 	</body>
 </html>

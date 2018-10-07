@@ -1,9 +1,15 @@
-var debugEnabled = false;
-
 const GAMEWIDTH  = 40;
 const GAMEHEIGHT = 20;
 const HMARGIN = 8;
 const VMARGIN = 4;
+
+var cameraX = 20;
+var cameraY = 20;
+
+var wMap = new QuestMap(worldMapText);
+console.log(wMap.map[10][10]);
+
+var debugEnabled = false;
 
 if (debugEnabled) {
 	debug();
@@ -19,24 +25,9 @@ for (var i = 0; i < GAMEHEIGHT; i++) {
 	gameScreen[i] = new Array(GAMEWIDTH);
 }
 
-var worldMap = new Array(64);
-for (var i = 0; i < 64; i++) {
-	worldMap[i] = new Array(128);
-	for (var j = 0; j < 128; j++) {
-		worldMap[i][j] = " ";
-	}
-}
-
-var mapRaw;
-loadMap();
-
-
 var gamePanel = document.getElementById("gamepanel");
 
 var currentKey = 0;
-
-var cameraX = 42;
-var cameraY = 26;
 
 var playerBold = true;
 var playerProne = false;
@@ -183,27 +174,8 @@ function spellProne() {
 	console.log("cast spell");
 }
 
-function loadMap() {
-	var req = new XMLHttpRequest();
-	req.onload = function(){
-    	mapRaw = this.responseText;
-    	mapRaw = mapRaw.split("\n");
-    	for (var i = 0; i < 64; i++) {
-    		mapRaw[i] = mapRaw[i].split("");
-    		mapRaw[i][128] = undefined;
-    		for (var j = 0; j < 128; j++) {
-    			worldMap[i][j] = mapRaw[i][j];
-    		}
-    	}
-    	updateGame();
-	};
-	req.open("GET", "./data/worldmap.txt");
-	req.send();
-}
-
 function updateGame() {
 	updateMapData();
-	//blankCanvas();
 
 	drawFireballs();
 
@@ -232,8 +204,7 @@ function updateGame() {
 function updateMapData() {
 	for (var i = 0; i < GAMEHEIGHT; i++) {
 		for (var j = 0; j < GAMEWIDTH; j++) {
-			//console.log("character added: " +  worldMap[i+cameraY][j+cameraX]);
-			gameScreen[i][j] = worldMap[i+cameraY][j+cameraX];
+			gameScreen[i][j] = wMap.map[i+cameraY][j+cameraX];
 		}
 	}
 }
