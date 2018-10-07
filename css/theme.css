@@ -2,14 +2,13 @@ body {
 	font-family: Arial;
 }
 
-#page-content {
-	padding-top: 1vh;
-}
-
 .fadeElement {
 	opacity: 0;
 }
 
+.contentSpacer {
+	padding-top: 2%;
+}
 .bar {
 	border-bottom: 2px solid black;
     border-bottom-color: #AAAAAA;

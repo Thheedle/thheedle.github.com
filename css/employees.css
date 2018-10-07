@@ -2,44 +2,8 @@
 	width: 100%;
 }
 
-.biopic, .biobox {
-	display: inline-block;
-	background: #f0f0f0;
-	margin:-2px;
-}
-
-.col {
-	display: inline-block;
-}
-
-.biopic img, .biobox {
-	vertical-align: middle;
-}
-
-.biopic {
-	width: 32%;
-	padding: 0;
-}
-
 .biobox {
 	padding: 1.5%;
-	width: 66%;
-}
-
-.col .biopic {
-	width: 100%;
-	padding: 0;
-}
-
-.employee .col {
-	padding: 0;
-	top: 50%;
-	
-}
-.col .biobox {
-	padding: 1.5%;
-	width: 100%;
-	top: 50%;
 }
 
 
@@ -51,10 +15,13 @@
 	font-size: 20pt;
     float: left;
 }
-
 .position {
 	font-size: 20pt;
 	float: right;
+}
+
+.bio {
+	font-size: 13pt;
 }
 
 .bioheader {
@@ -65,14 +32,20 @@
     padding-bottom: 1%;
 }
 
-.bio {
-	font-size: 13pt;
-}
-
 .float-right {
 	float: right;
 }
 
+.bioElements {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+    padding: 0;
+    margin: 0px;
+    background: #f0f0f0;
+}
+
 .employee {
-	overflow: hidden;
+padding-top: 1%;
+padding-bottom: 1%;
 }
