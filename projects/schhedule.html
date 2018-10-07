@@ -1,33 +1,86 @@
 <!doctype html>
 <html>
 	<head>
-		<title>Thheedle - Schhedule Maker</title>
+	<head>
+		<!--CHANGE THIS-->
+		<title>Thheedle - Schedule Maker</title>
+		<meta charset="utf-8">
+		<meta name="description" content="Thheedle's schheduling solution!">
+		<meta name="keywords" content="Thheedle, thheedle schedule, thheedle schedulemaker, schhedule maker, schheduleMaker">
+		<meta name="author" content="Thheedle Co.">
+		<meta name="viewport" content="width = device-width, initial-scale = 1">
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../css/theme.css" type="text/css" />
-
 		<link rel="stylesheet" href="../css/schhedule.css" type="text/css" />
 		<link rel="icon" type="image/png" href="../img/icon.png" />
 		<script type="text/javascript" src="../scripts/pde/processing.js"></script>
 	</head>
 
 	<body>
+		<div class="main">
+			<header>
+				<!--Thheedle Logo-->
+				<div class="row">
+					<!-- Spacer to center the logo-->
+					<div class="col col-lg-3 col-md-3 col-sm-2 col-xs-1"></div>
 
-		<img src="../img/thheedle_compact.png" alt="Thheedle Logo" data-fadeTime = "0" class="fadeElement" id="logo">
+					<!-- The logo div-->
+					<div class="col col-lg-6 col-md-6 col-sm-8 col-xs-10">
+						<img src="../img/thheedle_compact.png" alt="Thheedle Logo" id="logo">
+					</div>
+				</div>
 
-		<div data-fadeTime = ".33" id="nav" class = "fadeElement">
-		<div class="bar"></div>
-			<ul>
-				<li><a href="/" class="hlink">Home</a></li>
-				<li>/</li>
-				<li><a href="/employees" class="hlink">Employees</a></li>
-				<li>/</li>
-				<li><a href="/projects" class="hlink">Projects</a></li>
-				<li>/</li>
-				<li><a href="/about" class="hlink">About</a></li>
-			</ul>
-			<div class="bar"></div>
-			</div>
-		<div data-fadeTime =".66" class="mainBody fadeElement">
+				<!-- Upper Bar-->
+				<div class="row fadeElement" data-fadeTime="0"">
+					<!-- Thin spacer to center the bar-->
+					<div class="col col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+					<!-- The bar-->
+					<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+						<div class="bar"></div>
+					</div>
+				</div>
 
+				<!-- Nav buttons-->
+				<div class="row fadeElement" data-fadeTime="0">
+					<nav>
+						<ul>
+							<!-- Spacer that goes to 0 in mobile-->
+							<div class="col col-lg-2 col-md-2 col-sm-0 col-xs-0"></div>
+
+							<!-- Home nav-->
+							<div class="col col-lg-2 col-md-2 col-sm-12 col-xs-12">
+								<li><a class="hlink" href="/">Home</a></li>
+							</div>
+							<!-- Employees nav-->
+							<div class="col col-lg-2 col-md-2 col-sm-12 col-xs-12">
+								<li><a class="hlink" href="/employees">Employees</a></li>
+							</div>
+							<!-- Projects nav-->
+							<div class="col col-lg-2 col-md-2 col-sm-12 col-xs-12">
+								<li><a class="hlink" href="/projects">Projects</a></li>
+							</div>
+							<!-- About nav-->
+							<div class="col col-lg-2 col-md-2 col-sm-12 col-xs-12">
+								<li><a class="hlink" href="/about">About</a></li>
+							</div>
+						</ul>
+					</nav>
+				</div>
+
+				<!--Lower Bar-->
+				<div class="row fadeElement" data-fadeTime="0"">
+					<!-- Thin spacer to center the bar-->
+					<div class="col col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+					<!-- The bar-->
+					<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+						<div class="bar"></div>
+					</div>
+				</div>
+			</header>
+
+			<!--Body-->
+			<div class="contentSpacer"></div>
+			<div id="page-content fadeElement" data-fadeTime=".33"">
 			<div id="startPage">
 				<div class="title">Welcome to SchheduleMaker by Thheedle</div>
 				<div class="caption">
