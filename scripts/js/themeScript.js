@@ -1,6 +1,9 @@
 console.log("1");
 if (screen.width <= 699) {
-	document.location.pathname = "m"+document.location.pathname;
+	let url = window.location.pathname;
+	console.log(url);
+	window.location.href = ("m." + url);
+	
 }
 
 
