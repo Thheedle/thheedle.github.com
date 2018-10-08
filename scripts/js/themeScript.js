@@ -1,8 +1,6 @@
 console.log("1");
 if (screen.width <= 699) {
 	document.location.pathname = "m"+document.location.pathname;
-} else {
-
 }
 
 
