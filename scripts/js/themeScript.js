@@ -1,3 +1,11 @@
+console.log("1");
+if (screen.width <= 699) {
+	document.location.pathname = "m/"+document.location.pathname;
+} else {
+
+}
+
+
 function loadScript(url)
 {    
     var head = document.getElementsByTagName('head')[0];
