@@ -1,9 +1,9 @@
-console.log("1");
-if (screen.width <= 699) {
-	let url = window.location.pathname;
-	console.log(url);
-	window.location.href = ("m." + url);
-	
+checkRedirectToMobile() {
+	if (screen.width <= 699) {
+	let loc = window.location;
+	let newURL = loc.protocol + "//m." + loc.host + loc.pathname;
+	window.location.href = newURL
+	console.log(window.location);
 }
 
 
@@ -16,6 +16,8 @@ function loadScript(url)
     head.appendChild(script);
 }
 
+
+checkRedirectToMobile();
 loadScript("scripts/js/fadeScript.js");
 loadScript("scripts/js/cssHelperScript.js");
 loadScript("scripts/js/hlinkScript.js");
