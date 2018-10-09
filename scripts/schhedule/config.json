@@ -1,0 +1,5 @@
+{
+  "classfinderURL": "https://admin.wwu.edu/pls/wwis/wwsktime.SelClass",
+  "classfinderQueryURL" : "https://admin.wwu.edu/pls/wwis/wwsktime.ListClass",
+  "numberOfTermsCached" : 5
+}
