@@ -1,8 +1,22 @@
 window.addEventListener("keydown", keyPressed);
 
-var wMap = new QuestMap(worldMapText);
+var currentMap;
+//var camera = new QuestCamera(0, 0, 40, 20, 8, 4);
 var camera = new QuestCamera(20, 20, 40, 20, 8, 4);
 var player = new QuestPlayer(camera.x + (camera.width / 2), camera.y + (camera.height / 2));
+
+var handler = new QuestZoneHandler();
+
+/////////////////////////////////////////
+
+handler.addTextData("worldmap", worldmapText);
+handler.addWarp("worldmap", 1, "throneroom", 2, 1, 10, 10);
+handler.addTextData("throneroom", throneroomText);
+handler.addWarp("throneroom", 0, "worldmap", 100, 24, 112, 33);
+
+/////////////////////////////////////////
+
+handler.loadMap("worldmap");
 
 var gamePanel = document.getElementById("gamepanel");
 
@@ -63,7 +77,7 @@ function moveCamera(xDelta, yDelta) {
 }
 
 function updateMapData() {
-	wMap.populateCamera(camera.screen, camera.width, camera.height, camera.x, camera.y);
+	currentMap.populateCamera(camera.screen, camera.width, camera.height, camera.x, camera.y);
 }
 
 function drawEntities() {

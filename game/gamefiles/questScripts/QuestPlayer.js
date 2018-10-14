@@ -35,22 +35,26 @@ class QuestPlayer {
 	}
 
 	handleDirection(keyCode) {
+		console.log(currentMap.getTile(this.x, this.y));
 		var xDelta;
 		var yDelta;
-		if (keyCode % 2 == 0) {
-			xDelta = 0;
-			yDelta = keyCode - 39;
-		} else {
-			xDelta = keyCode - 38;
-			yDelta = 0;
-		}
-		if (this.canMove) {
-			this.move(xDelta, yDelta);
-		} else if (this.spellProne) {
-			this.cast(xDelta, yDelta);
-		}
+		if (keyCode <= 40 && keyCode >= 37) {
+			if (keyCode % 2 == 0) {
+				xDelta = 0;
+				yDelta = keyCode - 39;
+			} else {
+				xDelta = keyCode - 38;
+				yDelta = 0;
+			}
+			if (this.canMove) {
+				this.move(xDelta, yDelta);
+				this.detectWarp();
+			} else if (this.spellProne) {
+				this.cast(xDelta, yDelta);
+			}
 
-		updateCamera();
+			updateCamera();
+		}
 	}
 
 	move(xDelta, yDelta) {
@@ -70,5 +74,21 @@ class QuestPlayer {
 		new QuestFireball(this.x + xDelta, this.y + yDelta, xDelta, yDelta);
 		this.canMove = true;
 		this.spellProne = false;
+	}
+
+	lockMovement() {
+		this.canMove = false;
+	}
+
+	unlockMovement() {
+		this.canMove = true;
+	}
+
+	detectWarp() {
+		if (currentMap.getTile(this.x, this.y) == "0") {
+			handler.loadWarp(0);
+		} else if (currentMap.getTile(this.x, this.y) == "1") {
+			handler.loadWarp(1);
+		}
 	}
 }

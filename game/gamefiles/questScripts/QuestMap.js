@@ -24,4 +24,8 @@ class QuestMap {
 			}
 		}
 	}
+
+	getTile(globalX, globalY) {
+		return this.map[globalY][globalX];
+	}
 }
