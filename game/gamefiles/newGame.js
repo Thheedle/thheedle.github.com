@@ -8,7 +8,7 @@ var popcornArea = new PopcornArea(document.getElementById("interactiveArea"));
 var menu = new MenuBar(document.getElementsByClassName("menuButton"), [
 	document.getElementsByClassName("collectionElement"),
 	document.getElementsByClassName("itemsElement"),
-	document.getElementsByClassName("questsElement")]);
+	document.getElementsByClassName("questElement")]);
 
 var recentMessagesPanel = new MessagePanel(document.getElementById("recentMessages").children);
 

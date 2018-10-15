@@ -35,7 +35,6 @@ class QuestPlayer {
 	}
 
 	handleDirection(keyCode) {
-		console.log(currentMap.getTile(this.x, this.y));
 		var xDelta;
 		var yDelta;
 		if (keyCode <= 40 && keyCode >= 37) {
