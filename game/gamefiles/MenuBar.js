@@ -5,6 +5,12 @@ class MenuBar {
 	}
 
 	giveFocus(event) {
+		if (event.target.dataset.activate == 2) {
+			questActive = true;
+		} else {
+			questActive = false;
+		}
+
 		for (var i = 0; i < this.menuButtons.length; i++) {
 			this.menuButtons[i].style["background-color"] = "white";
 		}

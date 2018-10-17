@@ -1,5 +1,7 @@
 window.addEventListener("keydown", keyPressed);
 
+var questActive = false;
+
 var currentMap;
 //var camera = new QuestCamera(0, 0, 40, 20, 8, 4);
 var camera = new QuestCamera(20, 20, 40, 20, 8, 4);
@@ -12,24 +14,13 @@ var handler = new QuestZoneHandler();
 handler.addTextData("worldmap", worldmapText);
 handler.addWarp("worldmap", 1, "throneroom", 2, 1, 10, 10);
 handler.addTextData("throneroom", throneroomText);
-handler.addWarp("throneroom", 0, "worldmap", 100, 24, 112, 33);
+handler.addWarp("throneroom", 0, "worldmap", 84, 24, 112, 33);
 
 /////////////////////////////////////////
 
 handler.loadMap("worldmap");
 
-var gamePanel = document.getElementById("gamepanel");
-
-var debugEnabled = true;
-
-if (debugEnabled) {
-	debug();
-}
-
-function debug() {
-	document.getElementById("debug").style.visibility = "visible";
-	document.getElementById("fireballButton").setAttribute("onclick", "setProne()");
-}
+var gamePanel = document.getElementById("questPanel");
 
 function noCollisions(globalX, globalY) {
 	return camera.noCollisions(globalX, globalY);
@@ -44,7 +35,9 @@ function outOfBounds(x, y) {
 }
 
 function keyPressed(e) {
-	player.handleDirection(e.keyCode);
+	if (questActive) {
+		player.handleDirection(e.keyCode);
+	}
 }
 
 function updateFireballs() {
@@ -87,18 +80,14 @@ function drawEntities() {
 updateCamera();
 
 setInterval(function() {
-	//playerY++;
-	updateCamera();
-}, 1000);
-
-setInterval(function() {
-	//playerY++;
-	player.toggleBold();
-	updateCamera();
+	if (questActive) {
+		player.toggleBold();
+		updateCamera();
+	}
 }, 500);
 
 setInterval(function() {
-	if (updateNecessary()) {
+	if (updateNecessary() && questActive) {
 		updateFireballs();
 		updateCamera();
 	}

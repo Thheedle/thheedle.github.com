@@ -1,3 +1,7 @@
+html, body {
+	overflow-y: auto;
+}
+
 body {
 	margin: 0;
 	padding: 0;
@@ -5,7 +9,7 @@ body {
 }
 
 .monospace {
-	font-family: "Lucida Grande", Monaco, monospace;
+	font-family: "Lucida Console", Monaco, monospace;
 	white-space: pre-wrap;
 }
 
@@ -146,4 +150,48 @@ body {
 .hidden {
 	position: absolute;
 	top: -9999px;
+}
+
+#questPanel {
+	width: 40ch;
+	height: 20em;
+
+	padding: 3px;
+
+	margin-left: auto;
+	margin-right: auto;
+
+	border: 1px solid black;
+
+	text-align: center;
+	white-space: pre;
+}
+
+#questButtons {
+	width: 360px;
+	height: 200px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+}
+
+#questSpells, #questItems, .questDivider {
+	padding: 0;
+	height: 160px;
+	float:left;
+	text-align: center;
+}
+
+#questSpells, #questItems {
+	width: 40%;
+	display: table;
+	text-decoration: underline overline;
+}
+
+#questSpells, #questItems {
+	text-decoration: underline overline;
+}
+
+.questDivider {
+	width: 6.66%;
 }

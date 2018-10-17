@@ -58,14 +58,56 @@
 			No items yet!
 		</div>
 
-		<script src="scripts/gamefiles/utility.js"></script>
-		<script src="scripts/gamefiles/fade.js"></script>
-		<script src="scripts/gamefiles/MenuBar.js"></script>
-		<script src="scripts/gamefiles/MessagePanel.js"></script>
-		<script src="scripts/gamefiles/PopcornArea.js"></script>
-		<script src="scripts/gamefiles/PopcornCounter.js"></script>
+		<div id="questArea" class="questElement hidden">
+			<div id="questPanel" class="monospace">
+				Loading...
+			</div>
 
-		<script src="scripts/gamefiles/newGame.js"></script>
+			<div id="questButtons">
+				<div class="questDivider">
+					<div class="verticalBar"></div>
+				</div>
+
+				<div id="questSpells">
+					<span>spells</span>
+					<br>
+					<br>
+					<button id="fireballButton" type="button" onclick="setProne()">fireball</button>
+				</div>
+
+				<div class="questDivider">
+					<div class="verticalBar"></div>
+				</div>
+
+				<div id="questItems">
+					<span>Items</span>
+				</div>
+
+				<div class="questDivider">
+					<div class="verticalBar"></div>
+				</div>
+			</div>
+		</div>
+
+		<script src="game/gamefiles/utility.js"></script>
+		<script src="game/gamefiles/fade.js"></script>
+		<script src="game/gamefiles/MenuBar.js"></script>
+		<script src="game/gamefiles/MessagePanel.js"></script>
+		<script src="game/gamefiles/PopcornArea.js"></script>
+		<script src="game/gamefiles/PopcornCounter.js"></script>
+
+		<script src="game/gamefiles/newGame.js"></script>
 		<script src="scripts/js/cssHelperScript.js"></script>
+
+		<script src="game/gamefiles/questScripts/QuestZoneHandler.js"></script>
+		<script src="game/gamefiles/questScripts/QuestCamera.js"></script>
+		<script src="game/gamefiles/questScripts/QuestFireball.js"></script>
+		<script src="game/gamefiles/questScripts/QuestMap.js"></script>
+		<script src="game/gamefiles/questScripts/QuestPlayer.js"></script>
+
+		<script src="game/data/worldmap.js"></script>
+		<script src="game/data/throneroom.js"></script>
+
+		<script src="game/gamefiles/newGameQuest.js"></script>
 	</body>
 </html>
