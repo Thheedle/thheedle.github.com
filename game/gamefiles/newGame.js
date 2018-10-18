@@ -44,4 +44,3 @@ function handlePopcornClick(x, y) {
 function addRandomMessage() {
 	recentMessagesPanel.addRandomMessage();
 }
-

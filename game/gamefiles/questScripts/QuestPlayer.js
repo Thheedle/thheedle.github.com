@@ -3,6 +3,19 @@ class QuestPlayer {
 		this.x = startX;
 		this.y = startY;
 
+		this.currentSprite = "@";
+
+		this.health = 10;
+		this.maxHealth = 10;
+
+		this.mana = 10;
+		this.maxMana = 10;
+
+		this.fireballCost = 3;
+
+		this.healthBars = document.getElementById("healthBar");
+		this.manaBars = document.getElementById("manaBar");
+
 		this.bold = false;
 		this.spellProne = false;
 		this.canMove = true;
@@ -11,11 +24,15 @@ class QuestPlayer {
 	}
 
 	toggleBold() {
-		this.bold = !this.bold;
+		if (!this.isDead) {
+			this.bold = !this.bold;
+		}
+
+		this.detectHazard();
 	}
 
 	getSprite() {
-		var out = "@";
+		var out = this.currentSprite;
 		
 		if (this.spellProne) {
 			out = '<span style="background-color: #4454ff; color: white">' + out + '</span>';
@@ -23,15 +40,22 @@ class QuestPlayer {
 		if (this.bold) {
 			out = '<span style="background-color: grey; color: white">' + out + '</span>';
 		}
+
+		if (this.isDead) {
+			out = '<span style="background-color: pink; color: red">' + out + '</span>';
+		}
+
 		out = '<span>' + out + '</span>';
 		return out;
 	}
 
 	setProne() {
-		this.spellProne = true;
-		this.canMove = false;
+		if (this.mana >= this.fireballCost) {
+			this.spellProne = true;
+			this.canMove = false;
 
-		updateCamera();
+			updateCamera();
+		}
 	}
 
 	handleDirection(keyCode) {
@@ -47,6 +71,7 @@ class QuestPlayer {
 			}
 			if (this.canMove) {
 				this.move(xDelta, yDelta);
+				this.detectHazard();
 				this.detectWarp();
 			} else if (this.spellProne) {
 				this.cast(xDelta, yDelta);
@@ -73,6 +98,9 @@ class QuestPlayer {
 		new QuestFireball(this.x + xDelta, this.y + yDelta, xDelta, yDelta);
 		this.canMove = true;
 		this.spellProne = false;
+		this.mana -= this.fireballCost;
+
+		this.updateManaBars();
 	}
 
 	lockMovement() {
@@ -89,5 +117,27 @@ class QuestPlayer {
 		} else if (currentMap.getTile(this.x, this.y) == "1") {
 			handler.loadWarp(1);
 		}
+	}
+
+	detectHazard() {
+		if (currentMap.getTile(this.x, this.y) == "^") {
+			this.health -= 1;
+			this.updateHealthBars();
+		}
+	}
+
+	updateHealthBars() {
+		if (this.health <= 0) {
+			this.health = 0;
+			this.canMove = false;
+			this.currentSprite = "%";
+			this.isDead = true;
+			this.bold = false;
+		}
+		this.healthBars.style.width = (this.health * 100 / this.maxHealth) + "%";
+	}
+
+	updateManaBars() {
+		this.manaBars.style.width = (this.mana * 100 / this.maxMana) + "%";
 	}
 }

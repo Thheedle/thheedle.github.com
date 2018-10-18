@@ -21,10 +21,12 @@ class MenuBar {
 				for (var j = 0; j < this.menuElements[i].length; j++) {
 					if (!contains(this.menuElements[i][j].classList, "secret")) {
 						this.menuElements[i][j].classList.remove("hidden");
+						this.menuElements[i][j].classList.add("shown");
 					}
 				}
 			} else {
 				for (var j = 0; j < this.menuElements[i].length; j++) {
+					this.menuElements[i][j].classList.remove("shown");
 					this.menuElements[i][j].classList.add("hidden");
 				}
 			}

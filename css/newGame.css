@@ -152,6 +152,78 @@ body {
 	top: -9999px;
 }
 
+.shown {
+	position: auto;
+	top: auto;
+}
+
+#resources {
+	width: 50%;
+
+	padding: 0;
+
+	margin-left: auto;
+	margin-right: auto;
+
+	text-align: center;
+
+	margin-bottom: 5px;
+
+	overflow: auto;
+}
+
+.resourceContainer {
+	width: 48%;
+	height: 100%;
+	float: left;
+
+	margin-left: 1%;
+	margin-right: 1%;
+
+	position: relative;
+
+	overflow: hidden;
+}
+
+.healthContainer {
+	background: #ffbfbf;
+}
+
+.manaContainer {
+	background: #d3dbff;
+}
+
+#healthBar, #manaBar {
+	width: 100%;
+	height: 22px;
+}
+
+#healthBar {
+	background: red;
+}
+
+#manaBar {
+	background: blue;
+	float:right;
+}
+
+.barOverlay {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 100%;
+}
+
+#healthText {
+	text-align: left;
+	left: 5px;
+}
+
+#manaText {
+	text-align: right;
+	right: 5px;
+}
+
 #questPanel {
 	width: 40ch;
 	height: 20em;
@@ -161,7 +233,7 @@ body {
 	margin-left: auto;
 	margin-right: auto;
 
-	border: 1px solid black;
+	border: 3px double black;
 
 	text-align: center;
 	white-space: pre;
