@@ -44,3 +44,7 @@ function handlePopcornClick(x, y) {
 function addRandomMessage() {
 	recentMessagesPanel.addRandomMessage();
 }
+
+function stopHiding(element) {
+	menu.menuButtons[2].classList.remove("tempHidden");
+}

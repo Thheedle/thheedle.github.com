@@ -12,9 +12,9 @@ var handler = new QuestZoneHandler();
 /////////////////////////////////////////
 
 handler.addTextData("worldmap", worldmapText);
-handler.addWarp("worldmap", 1, "throneroom", 2, 1, 10, 10);
+handler.addWarp("worldmap", 1, "throneroom", 2, 1, 8, 9);
 handler.addTextData("throneroom", throneroomText);
-handler.addWarp("throneroom", 0, "worldmap", 84, 24, 112, 33);
+handler.addWarp("throneroom", 0, "worldmap", 84, 24, 28, 9);
 
 /////////////////////////////////////////
 
@@ -70,7 +70,7 @@ function moveCamera(xDelta, yDelta) {
 }
 
 function updateMapData() {
-	currentMap.populateCamera(camera.screen, camera.width, camera.height, camera.x, camera.y);
+	currentMap.populateCamera(camera.charScreen, camera.colorScreen, camera.width, camera.height, camera.x, camera.y);
 }
 
 function drawEntities() {

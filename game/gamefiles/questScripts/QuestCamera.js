@@ -7,11 +7,14 @@ class QuestCamera {
 		this.xMargin = xMargin;
 		this.yMargin = yMargin;
 
-		this.screen = new Array(height);
+		this.charScreen = new Array(height);
+		this.colorScreen = new Array(height);
+
 		for (var i = 0; i < this.height; i++) {
-			this.screen[i] = new Array(width);
+			this.charScreen[i] = new Array(width);
+			this.colorScreen[i] = new Array(width);
 			for (var j = 0; j < this.width; j++) {
-				this.screen[i][j] = "#";
+				this.charScreen[i][j] = "#";
 			}
 		}
 	}
@@ -34,15 +37,25 @@ class QuestCamera {
 		var out = "";
 		for (var i = 0; i < this.height; i++) {
 			for (var j = 0; j < this.width; j++) {
-				out = out + this.screen[i][j];
+				out = out + this.getRichTile(j, i);
 			}
 			out = out + "\n";
 		}
 		return out;
 	}
 
+	getRichTile(x, y) {
+		var tile = this.charScreen[y][x];
+		var color = this.colorScreen[y][x];
+		if (color == undefined) {
+			return tile;
+		} else {
+			return '<span style="color: ' + color + '">' + tile + '</span>';
+		}
+	}
+
 	writeScreen(globalX, globalY, text) {
-		this.screen[globalY - this.y][globalX - this.x] = text;
+		this.charScreen[globalY - this.y][globalX - this.x] = text;
 	}
 
 	onScreen(globalX, globalY) {
@@ -56,7 +69,7 @@ class QuestCamera {
 
 	noCollisions(globalX, globalY) {
 		if (this.onScreen(globalX, globalY)) {
-			if (contains(QuestCamera.collisionCharacters, this.screen[globalY - this.y][globalX - this.x])) {
+			if (contains(QuestCamera.collisionCharacters, this.charScreen[globalY - this.y][globalX - this.x])) {
 				return false;
 			}
 		}

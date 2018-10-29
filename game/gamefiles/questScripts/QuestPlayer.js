@@ -11,6 +11,8 @@ class QuestPlayer {
 		this.mana = 10;
 		this.maxMana = 10;
 
+		this.damageTimer = undefined;
+
 		this.fireballCost = 3;
 
 		this.healthBars = document.getElementById("healthBar");
@@ -27,8 +29,6 @@ class QuestPlayer {
 		if (!this.isDead) {
 			this.bold = !this.bold;
 		}
-
-		this.detectHazard();
 	}
 
 	getSprite() {
@@ -71,7 +71,6 @@ class QuestPlayer {
 			}
 			if (this.canMove) {
 				this.move(xDelta, yDelta);
-				this.detectHazard();
 				this.detectWarp();
 			} else if (this.spellProne) {
 				this.cast(xDelta, yDelta);
@@ -91,6 +90,7 @@ class QuestPlayer {
 			}
 			this.x = plannedX;
 			this.y = plannedY;
+			this.detectHazard();
 		}
 	}
 
@@ -121,9 +121,19 @@ class QuestPlayer {
 
 	detectHazard() {
 		if (currentMap.getTile(this.x, this.y) == "^") {
-			this.health -= 1;
-			this.updateHealthBars();
+			var that = this;
+			that.dealDamage(1);
+			this.damageTimer = setInterval(function() {
+				that.dealDamage(1);
+			}, 500);
+		} else {
+			clearInterval(this.damageTimer);
 		}
+	}
+
+	dealDamage(damage = 1) {
+		this.health -= damage;
+		this.updateHealthBars();
 	}
 
 	updateHealthBars() {

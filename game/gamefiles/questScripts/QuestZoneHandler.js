@@ -14,8 +14,8 @@ class QuestZoneHandler {
 
 		this.warpPoints[source]["cx"] = cx;
 		this.warpPoints[source]["cy"] = cy;
-		this.warpPoints[source]["px"] = px;
-		this.warpPoints[source]["py"] = py;
+		this.warpPoints[source]["px"] = px + cx;
+		this.warpPoints[source]["py"] = py + cy;
 	}
 
 	addTextData(location, rawText) {
