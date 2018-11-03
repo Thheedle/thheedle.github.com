@@ -49,7 +49,6 @@ class QuestMap {
 			if (tile != "#") {
 				return bg;
 			} else {
-				console.log("found new shit");
 				var color = getStoneColor();
 				this.mapColors[globalY][globalX] = color;
 				return color;

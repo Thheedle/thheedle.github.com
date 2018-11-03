@@ -12,6 +12,7 @@ class QuestPlayer {
 		this.maxMana = 10;
 
 		this.damageTimer = undefined;
+		this.manaTimer = undefined;
 
 		this.fireballCost = 3;
 
@@ -78,6 +79,10 @@ class QuestPlayer {
 
 			updateCamera();
 		}
+
+		if (keyCode == 70) {
+			setProne();
+		}
 	}
 
 	move(xDelta, yDelta) {
@@ -99,6 +104,18 @@ class QuestPlayer {
 		this.canMove = true;
 		this.spellProne = false;
 		this.mana -= this.fireballCost;
+
+		if (this.manaTimer == undefined) {
+			var that = this;
+			this.manaTimer = setInterval(function() {
+				that.mana += 1;
+				that.updateManaBars();
+				if (that.mana == that.maxMana) {
+					clearInterval(that.manaTimer);
+					that.manaTimer = undefined;
+				}
+			}, 3000);
+		}
 
 		this.updateManaBars();
 	}

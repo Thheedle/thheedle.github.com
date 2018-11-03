@@ -50,3 +50,17 @@ QuestFireball.updateNecessary = function() {
 	}
 	return false;
 }
+
+QuestFireball.overlap = function(entities) {
+	for (var i = 0; i < QuestFireball.fireballArray.length; i++) {
+		for (var j = 0; j < entities.length; j++) {
+			if (entities[j] != undefined && QuestFireball.fireballArray[i] != undefined) {
+				if (entities[j].x == QuestFireball.fireballArray[i].x && entities[j].y == QuestFireball.fireballArray[i].y) {
+					console.log("direct hit!");
+					entities[j].fireball();
+					QuestFireball.fireballArray[i].remove();
+				}
+			}
+		}
+	}
+}

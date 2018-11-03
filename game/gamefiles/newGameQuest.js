@@ -7,6 +7,8 @@ var currentMap;
 var camera = new QuestCamera(20, 20, 40, 20, 8, 4);
 var player = new QuestPlayer(camera.x + (camera.width / 2), camera.y + (camera.height / 2));
 
+new QuestSlime(40, 40);
+
 var handler = new QuestZoneHandler();
 
 /////////////////////////////////////////
@@ -52,6 +54,14 @@ function drawFireballs() {
 	}
 }
 
+function drawSlimes() {
+	for (var i = 0; i < QuestSlime.slimeArray.length; i++) {
+		if (camera.onScreen(QuestSlime.slimeArray[i].x, QuestSlime.slimeArray[i].y)) {
+			camera.writeScreen(QuestSlime.slimeArray[i].x, QuestSlime.slimeArray[i].y, QuestSlime.slimeArray[i].currentSprite);
+		}
+	}
+}
+
 function updateNecessary() {
 	return QuestFireball.updateNecessary();
 }
@@ -75,6 +85,7 @@ function updateMapData() {
 
 function drawEntities() {
 	drawFireballs();
+	drawSlimes();
 }
 
 updateCamera();
@@ -83,6 +94,7 @@ setInterval(function() {
 	if (questActive) {
 		player.toggleBold();
 		updateCamera();
+		QuestSlime.updateSlimes();
 	}
 }, 500);
 
@@ -90,5 +102,6 @@ setInterval(function() {
 	if (updateNecessary() && questActive) {
 		updateFireballs();
 		updateCamera();
+		QuestFireball.overlap(QuestSlime.slimeArray);
 	}
-}, 100);
+}, 50);
