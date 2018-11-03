@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title>New and Improved</title>
-		<link rel="stylesheet" href="css/newGame.css" type="text/css" />
+		<link rel="stylesheet" href="game/newGame.css" type="text/css" />
 		<link rel="icon" type="image/png" href="img/icon.png" />
 	</head>
 
@@ -10,7 +10,7 @@
 		<div id="menu">
 			<ul>
 				<li><span data-activate="0" id="collection" class="gameButton menuButton" onclick="giveFocus(event)">Collection</span></li>
-				<li><span data-activate="1" id="items" class="gameButton menuButton" onclick="giveFocus(event)">Items</span></li>
+				<li><span data-activate="1" id="items" class="gameButton menuButton tempHidden" onclick="giveFocus(event)">Items</span></li>
 				<li><span data-activate="2" id="quests" class="gameButton menuButton" onclick="giveFocus(event)">Quests</span></li>
 			</ul>
 		</div>
@@ -64,6 +64,9 @@
 					<div id="healthBar"></div>
 					<div id="healthText" class="barOverlay">HP</div>
 				</div>
+				<div class="dividerContainer">
+					<div class="resourceDivider"></div>
+				</div>
 				<div class="resourceContainer manaContainer">
 					<div id="manaBar"></div>
 					<div id="manaText" class="barOverlay">MP</div>
@@ -83,7 +86,7 @@
 					<span>spells</span>
 					<br>
 					<br>
-					<button id="fireballButton" type="button" onclick="setProne()">fireball</button>
+					<button id="fireballButton" type="button" onclick="setProne()" class="gameButton monospace"><span style="text-decoration: underline">f</span>ireball</button>
 				</div>
 
 				<div class="questDivider">
@@ -115,6 +118,9 @@
 		<script src="game/gamefiles/questScripts/QuestFireball.js"></script>
 		<script src="game/gamefiles/questScripts/QuestMap.js"></script>
 		<script src="game/gamefiles/questScripts/QuestPlayer.js"></script>
+
+		<script src="game/gamefiles/questScripts/QuestMonster.js"></script>
+		<script src="game/gamefiles/questScripts/QuestSlime.js"></script>
 
 		<script src="game/data/worldmap.js"></script>
 		<script src="game/data/throneroom.js"></script>
