@@ -15,14 +15,18 @@ body {
 }
 
 .bar, #pageContent {
-	width: 50%;
+	width: 55%;
 	margin-left: auto;
     margin-right: auto;
 }
-.bar {
-	border-bottom: 2px solid black;
-    border-bottom-color: #AAAAAA;
 
+.bar {
+	border-bottom: 2px solid #AAAAAA;
+	height: 1px;
+}
+
+.topSpacing {
+	margin-top: 10px;
 }
 
 .contentSpacer {
