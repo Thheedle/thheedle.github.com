@@ -10,12 +10,12 @@
 		<div id="menu">
 			<ul>
 				<li><span data-activate="0" id="collection" class="gameButton menuButton" onclick="giveFocus(event)">Collection</span></li>
-				<li><span data-activate="1" id="items" class="gameButton menuButton tempHidden" onclick="giveFocus(event)">Items</span></li>
+				<li><span data-activate="1" id="items" class="gameButton menuButton" onclick="giveFocus(event)">Items</span></li>
 				<li><span data-activate="2" id="quests" class="gameButton menuButton" onclick="giveFocus(event)">Quests</span></li>
 			</ul>
 		</div>
 
-		<div id="gameArea" class="collectionElement shown">
+		<div id="gameArea" class="collectionElement hidden">
 			<div id="mainTextPanel">
 				<div id="gameText">
 					You have 
@@ -58,7 +58,7 @@
 			No items yet!
 		</div>
 
-		<div id="questArea" class="questElement hidden">
+		<div id="questArea" class="questElement shown">
 			<div id="resources">
 				<div class="resourceContainer healthContainer">
 					<div id="healthBar"></div>

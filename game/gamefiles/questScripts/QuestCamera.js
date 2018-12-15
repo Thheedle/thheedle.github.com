@@ -68,12 +68,10 @@ class QuestCamera {
 	}
 
 	noCollisions(globalX, globalY) {
-		if (this.onScreen(globalX, globalY)) {
-			if (contains(QuestCamera.collisionCharacters, this.charScreen[globalY - this.y][globalX - this.x])) {
-				return false;
-			}
+		if (!contains(QuestCamera.collisionCharacters, currentMap.getTile(globalX, globalY))) {
+			return true;
 		}
-		return true;
+		return false;
 	}
 }
 

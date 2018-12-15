@@ -33,6 +33,7 @@ class QuestFireball {
 				break;
 			}
 		}
+		updateCamera();
 	}
 }
 

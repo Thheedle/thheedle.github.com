@@ -5,14 +5,15 @@ class QuestSlime extends QuestMonster {
 		this.health = 3;
 		this.maxHealth = 3;
 
-		this.currentSprite = 'O';
+		this.currentSprite = '<span style="color: transparent; text-shadow: 0 0 4px lime">O</span>';
 
 		QuestSlime.slimeArray.push(this);
 	}
 
 	move() {
 		if (player.onScreen) {
-			if (taxi(this.x, this.y, player.x, player.y) <= 5) {
+			var dist = taxi(this.x, this.y, player.x, player.y);
+			if (dist <= 5 && dist > 0) {
 				this.runAway();
 			} else {
 				this.wander();
@@ -67,8 +68,9 @@ class QuestSlime extends QuestMonster {
 
 QuestSlime.slimeArray = new Array();
 
-QuestSlime.updateSlimes = function() {
+QuestSlime.moveSlimes = function() {
 	for (var i = 0; i < QuestSlime.slimeArray.length; i++) {
 		QuestSlime.slimeArray[i].move();
 	}
+	updateCamera();
 };

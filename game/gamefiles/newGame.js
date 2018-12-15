@@ -14,6 +14,10 @@ var recentMessagesPanel = new MessagePanel(document.getElementById("recentMessag
 
 var popcorns = new PopcornCounter(document.getElementsByClassName("ownedCounter"));
 
+var questActive = false;
+
+giveFocusByName(2);
+
 /* WRAPPER FUNCTIONS
    This program, newGame.js, serves as the initial destination
    to handle button presses or other user input. In order to
@@ -23,6 +27,10 @@ var popcorns = new PopcornCounter(document.getElementsByClassName("ownedCounter"
 
 function giveFocus(e) {
 	menu.giveFocus(e);
+}
+
+function giveFocusByName(n) {
+	menu.giveFocusByName(n);
 }
 
 function addPopcorns() {

@@ -32,4 +32,33 @@ class MenuBar {
 			}
 		}
 	}
+
+	giveFocusByName(n) {
+		if (n == 2) {
+			questActive = true;
+		} else {
+			questActive = false;
+		}
+
+		for (var i = 0; i < this.menuButtons.length; i++) {
+			this.menuButtons[i].style["background-color"] = "white";
+		}
+		this.menuButtons[n].style["background-color"] = "#f4e242";
+
+		for (var i = 0; i < 3; i++) {
+			if (i == n) {
+				for (var j = 0; j < this.menuElements[i].length; j++) {
+					if (!contains(this.menuElements[i][j].classList, "secret")) {
+						this.menuElements[i][j].classList.remove("hidden");
+						this.menuElements[i][j].classList.add("shown");
+					}
+				}
+			} else {
+				for (var j = 0; j < this.menuElements[i].length; j++) {
+					this.menuElements[i][j].classList.remove("shown");
+					this.menuElements[i][j].classList.add("hidden");
+				}
+			}
+		}
+	}
 }

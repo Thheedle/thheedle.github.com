@@ -21,6 +21,8 @@ class QuestPlayer {
 
 		this.bold = false;
 		this.spellProne = false;
+
+		this.isDead = false;
 		this.canMove = true;
 
 		this.onScreen = true;

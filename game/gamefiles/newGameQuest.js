@@ -1,13 +1,11 @@
 window.addEventListener("keydown", keyPressed);
 
-var questActive = false;
-
 var currentMap;
 //var camera = new QuestCamera(0, 0, 40, 20, 8, 4);
 var camera = new QuestCamera(20, 20, 40, 20, 8, 4);
 var player = new QuestPlayer(camera.x + (camera.width / 2), camera.y + (camera.height / 2));
 
-new QuestSlime(40, 40);
+new QuestSlime(30, 30);
 
 var handler = new QuestZoneHandler();
 
@@ -94,7 +92,7 @@ setInterval(function() {
 	if (questActive) {
 		player.toggleBold();
 		updateCamera();
-		QuestSlime.updateSlimes();
+		QuestSlime.moveSlimes();
 	}
 }, 500);
 
