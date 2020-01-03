@@ -3,7 +3,7 @@ let fadeElements = document.getElementsByClassName("fadeElement");
 function fadeIn(elm) {
 	let op = 0;
 
-	let smoothness = 3.0;
+	let smoothness = 6.0;
 
 	let timer = setInterval(function () {
 		if (op >= 1) {
