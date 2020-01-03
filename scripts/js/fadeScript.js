@@ -3,14 +3,16 @@ let fadeElements = document.getElementsByClassName("fadeElement");
 function fadeIn(elm) {
 	let op = 0;
 
+	let smoothness = 3.0;
+
 	let timer = setInterval(function () {
 		if (op >= 1) {
 			elm.style.opacity = 1;
 			clearInterval(timer);
 		}
 		elm.style.opacity = op;
-		op = op + .05;
-	}, 60);
+		op = op + (.05 / smoothness);
+	}, (60 / smoothness));
 }
 
 function fadeInArray(arr) {
